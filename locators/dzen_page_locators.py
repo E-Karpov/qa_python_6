@@ -2,4 +2,4 @@ from selenium.webdriver.common.by import By
 
 
 class DzenPageLocators:
-    main_button_dzen = (By.XPATH, ".//span[text() = 'Главная']")
+    MAIN_BUTTON_DZEN = (By.XPATH, '//a[@href="https://dzen.ru/" and @aria-label="Главная"]')

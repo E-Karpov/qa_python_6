@@ -5,7 +5,7 @@ class Urls:
     TRACK_PAGE_URL = "https://qa-scooter.praktikum-services.ru/track"
 
 class Users:
-    user_1 = {
+    USER_1 = {
         1: 'Эдуард',
         2: 'Карпов',
         3: 'Москва, ул. Пресненская набережная, д. 20',
@@ -15,7 +15,7 @@ class Users:
         7: 'Позвоните за 15 минут',
     }
 
-    user_2 = {
+    USER_2 = {
         1: 'Александр',
         2: 'Пушков',
         3: 'Москва, ул. Льва Толстого, д. 16',
@@ -26,7 +26,7 @@ class Users:
     }
 
 class Questions:
-    expected_question_text = [
+    EXPECTED_QUESTION_TEXT  = [
         # Сколько это стоит? И как оплатить?
             'Сутки — 400 рублей. Оплата курьеру — наличными или картой.',
         # Хочу сразу несколько самокатов! Так можно?

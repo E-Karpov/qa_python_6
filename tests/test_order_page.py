@@ -26,7 +26,7 @@ class TestOrderPage:
         order_page = OrderPage(driver)
         home_page.accept_cookies()
         home_page.scroll_and_click_order_button()
-        order_page.complete_order(Users.user_2)
+        order_page.complete_order(Users.USER_2)
         assert order_page.is_order_confirmed()
 
     @allure.title('Проверка оформления заказа через кнопку "Заказать" в хедере')
@@ -49,5 +49,5 @@ class TestOrderPage:
         order_page = OrderPage(driver)
         header_page.accept_cookies()
         header_page.click_order_button()
-        order_page.complete_order(Users.user_1)
+        order_page.complete_order(Users.USER_1)
         assert order_page.is_order_confirmed()

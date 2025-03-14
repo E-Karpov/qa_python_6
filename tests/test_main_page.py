@@ -1,9 +1,9 @@
-import time
 import allure
 import pytest
 
 from data import Questions, Urls
-from locators.main_page_locators import MainPageLocators
+from locators.main_page_locators import MainPageHeaderLocators, MainPageLocators
+from locators.dzen_page_locators import DzenPageLocators
 from pages.main_page import MainPage, MainPageHeader
 from pages.dzen_page import DzenPage
 
@@ -49,7 +49,10 @@ class TestMainPage:
         dzen_page = DzenPage(driver)
         header_page.click_yandex_logo()
         header_page.switch_to_new_tab()
-        time.sleep(5)  # Ожидание загрузки страницы
+
+        # Ожидаем загрузки страницы Дзен по наличию кнопки "Главная"
+        dzen_page.wait_for_page_to_load(DzenPageLocators.MAIN_BUTTON_DZEN, timeout=20)
+
         current_url = header_page.get_current_url()
         assert current_url == Urls.DZEN_URL and dzen_page.is_main_button_displayed()
 
@@ -59,7 +62,7 @@ class TestMainPage:
         Ожидаем, что каждый ответ совпадает с данными из Questions.expected_question_text.
     ''')
     @pytest.mark.parametrize('question_locator, question_text_locator, expected_question_text',
-                             zip(MainPageLocators.questions, MainPageLocators.questions_text, Questions.expected_question_text))
+                             zip(MainPageLocators.QUESTIONS, MainPageLocators.QUESTIONS_TEXT, Questions.EXPECTED_QUESTION_TEXT))
     def test_faq_section_answers(self, driver, question_locator, question_text_locator, expected_question_text):
         """
         Тест проверяет корректность ответов в разделе "Вопросы о важном".
